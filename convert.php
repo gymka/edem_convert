@@ -25,19 +25,18 @@ header('Content-Type: text/html; charset=utf-8');
 
 $list=file("link.txt");
 $play=file_get_contents(trim($list[0]));
-
 $kanalai = explode("\n", $play);
-echo count($kanalai);
 unset($kanalai[0]);
 foreach($kanalai as $n => $line) {
-   if(strstr($line, "EXTGRP:")) {
+
+	//echo $line."<br>";
+   if(stristr($line, "EXTGRP:")) {
 
 	   $grupe=trim(str_replace("#EXTGRP:","",$line));
 	   $grupeu=mb_convert_case($grupe, MB_CASE_TITLE, "UTF-8");
-	   
+
 	   $pavadinimas=explode(",",$kanalai[$n-1]);
 	   $pavadinimasu=trim(mb_convert_case($pavadinimas[1], MB_CASE_TITLE, "UTF-8"));
-	   unset($kanalai[$n]); //elementas lieka, tik tuščias. wtf?
 	   $kanalai[$n-1]="#EXTINF:0 group-title=\"$grupeu\",$pavadinimasu";
 	  	  
 	   }
