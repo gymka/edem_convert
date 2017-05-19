@@ -33,11 +33,11 @@ foreach($kanalai as $n => $line) {
    if(stristr($line, "EXTGRP:")) {
 
 	   $grupe=trim(str_replace("#EXTGRP:","",$line));
-	   $grupeu=mb_convert_case($grupe, MB_CASE_TITLE, "UTF-8");
+	  
 
 	   $pavadinimas=explode(",",$kanalai[$n-1]);
-	   $pavadinimasu=trim(mb_convert_case($pavadinimas[1], MB_CASE_TITLE, "UTF-8"));
-	   $kanalai[$n-1]="#EXTINF:0 group-title=\"$grupeu\",$pavadinimasu";
+	   $pavadinimas=trim($pavadinimas[1]);
+	   $kanalai[$n-1]="#EXTINF:0 group-title=\"$grupe\",$pavadinimas";
 	  	  
 	   }
 
