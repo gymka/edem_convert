@@ -50,7 +50,7 @@ $megstamiausi=file('kanalai.txt');
 for ($i=0; $i<count($megstamiausi); $i++) 
 	{
 		$megstamiausi2=trim($megstamiausi[$i]);
-		$a=preg_grep("/.*,$megstamiausi2.*/i",$kanalai); 
+		$a=preg_grep("/.*,$megstamiausi2$/i",$kanalai); 
 
 		foreach($a as $nr =>$nereikalinga) {
 			 
