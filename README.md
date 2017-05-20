@@ -32,8 +32,13 @@ http://blablabla.bla/index.m3u8
 ```
 
 Po teksto `#EXTINF:0` galim įrašyt ir kitų konfigūracijos pasirinkimų, pvz.
+
 `tvg-shift` epg laiko juostos pasukimas
+
 `tvg-name` vardas pagal kurį bus ieškoma epg info/taip kaip kanalas pavadintas epg šaltinyje
+
 `tvg-logo` kanalo logo
+
 `audio-track` pageidaujama audio kalba pvz. `eng, rus, lit` pagal `ISO 639-2` standartą
+
 `aspect-ratio` galimos reikšmės `16:9, 3:2, 4:3, 1,85:1, 2,39:1`
