@@ -23,7 +23,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 //=========sąrašo konvertavimas į kodi suprantamą grupių rašymą=========
 
-$list=file("link.txt");
+$list=file("link8jfakdjf.txt");
 $play=file_get_contents(trim($list[0]));
 $kanalai = explode("\n", $play);
 unset($kanalai[0]);
@@ -45,11 +45,13 @@ foreach($kanalai as $n => $line) {
 
 //====================mėgstamiausių grupės kūrimas======================
 
-$megstamiausi=array('Discovery Channel Hd', 'History HD','Discovery Channel', 'National Geographic HD','Наука 2.0', 'Авто 24', 'DTX','Discovery Science', 'Viasat Explore', 'ID Xtra', 'РОДНОЕ КИНО','Наше новое кино', 'СТС'); //norimi kanalai norima tvarka
+$megstamiausi=file('kanalai.txt');
 
 for ($i=0; $i<count($megstamiausi); $i++) 
 	{
-		$a=preg_grep("/.*,$megstamiausi[$i].*/i",$kanalai); 
+		$megstamiausi2=trim($megstamiausi[$i]);
+		$a=preg_grep("/.*,$megstamiausi2.*/i",$kanalai); 
+
 		foreach($a as $nr =>$nereikalinga) {
 			 
 			$mano_list[]=preg_replace("/group-title=\".*\"/","group-title=\"mano\"",$kanalai[$nr]);
@@ -59,11 +61,12 @@ for ($i=0; $i<count($megstamiausi); $i++)
 
 //=====================sąrašo atvaizdavimas=============================
 
+
 header("Content-Disposition: attachment; filename=\"edem_list.m3u");
 echo "#EXTM3U\n";
 for ($i=0; $i<count($kanalai); $i++) 
 	{
-		if ($kanalai[$i]!="") { //pašalinam tą paliktą su unset()
+		if ($kanalai[$i]!="") { 
 			echo $kanalai[$i]."\n"; }
 	}
 for ($i=0; $i<count($mano_list); $i++) 
